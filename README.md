@@ -54,7 +54,7 @@
 - belongs_to :user
 
 
-## addressees テーブル
+## addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
