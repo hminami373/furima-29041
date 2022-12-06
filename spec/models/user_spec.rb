@@ -86,19 +86,19 @@ RSpec.describe User, type: :model do
         @user.password = 'testtest'
         @user.password_confirmation = 'testtest'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password confirmation は半角英数で入力して下さい')
+        expect(@user.errors.full_messages).to include('Password は半角英数で入力して下さい')
       end
       it 'passwordが数字のみでは登録できない' do
         @user.password = '123456'
         @user.password_confirmation = '123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password confirmation は半角英数で入力して下さい')
+        expect(@user.errors.full_messages).to include('Password は半角英数で入力して下さい')
       end
       it 'passwordが全角数値混合では登録できない' do
         @user.password = '1２3456'
         @user.password_confirmation = '1２3456'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password confirmation は半角英数で入力して下さい')
+        expect(@user.errors.full_messages).to include('Password は半角英数で入力して下さい')
       end
       it 'last_nameはスペースを含んでは登録できない' do
         @user.last_name = '　'

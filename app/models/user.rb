@@ -4,9 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
-
-
   validates :nickname, length: { maximum: 40 }
 
   with_options presence: true do
