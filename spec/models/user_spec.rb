@@ -82,6 +82,38 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too long (maximum is 128 characters)')
       end
+      it 'passwordが英字のみでは登録できない' do
+        @user.password = 'tttttt'
+        @user.password_confirmation = 'tttttt'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password confirmation は半角英数で入力して下さい')
+      end
+      it 'passwordが数字のみでは登録できない' do
+        @user.password = '000000'
+        @user.password_confirmation = '000000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password confirmation は半角英数で入力して下さい')
+      end
+      it 'last_nameはスペースを含んでは登録できない' do
+        @user.last_name = '　'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name は全角ひらがな、全角カタカナ、漢字で入力して下さい')
+      end
+      it 'first_nameはスペースを含んでは登録できない' do
+        @user.first_name = '　'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name は全角ひらがな、全角カタカナ、漢字で入力して下さい')
+      end
+      it 'last_name_kanaはスペースを含んでは登録できない' do
+        @user.last_name = '　'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name は全角ひらがな、全角カタカナ、漢字で入力して下さい')
+      end
+      it 'first_name_kanaはスペースを含んでは登録できない' do
+        @user.last_name = '　'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name は全角ひらがな、全角カタカナ、漢字で入力して下さい')
+      end
       it 'last_nameは半角では登録できない' do
         @user.last_name = 'test'
         @user.valid?
