@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
   end
 
   def branch
-    return unless current_user != @item.user
+    return unless current_user != @item.user || @item.order.present?
     redirect_to root_path
   end
 end
