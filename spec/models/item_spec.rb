@@ -15,67 +15,67 @@ RSpec.describe Item, type: :model do
       it '画像が空では投稿できない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include('商品画像を入力してください')
       end
       it '商品名が空では投稿できない' do
         @item.item_name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item name can't be blank")
+        expect(@item.errors.full_messages).to include('商品名を入力してください')
       end
       it '商品説明が空では投稿できない' do
         @item.item_info = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item info can't be blank")
+        expect(@item.errors.full_messages).to include('商品の説明を入力してください')
       end
       it 'カテゴリーが空では投稿できない' do
         @item.item_category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item category can't be blank")
+        expect(@item.errors.full_messages).to include('カテゴリーを入力してください')
       end
       it '状態が空では投稿できない' do
         @item.item_sales_status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item sales status can't be blank")
+        expect(@item.errors.full_messages).to include('商品の状態を入力してください')
       end
       it '配送料の負担が空では投稿できない' do
         @item.item_shipping_fee_status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item shipping fee status can't be blank")
+        expect(@item.errors.full_messages).to include('配送料の負担を入力してください')
       end
       it '発送元の地域が空では投稿できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include('発送元の地域を入力してください')
       end
       it '発送までの日数が空では投稿できない' do
         @item.item_scheduled_delivery_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item scheduled delivery can't be blank")
+        expect(@item.errors.full_messages).to include('発送までの日数を入力してください')
       end
       it '販売価格が空では投稿できない' do
         @item.item_price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item price can't be blank")
+        expect(@item.errors.full_messages).to include('販売価格を入力してください')
       end
       it 'ユーザーが紐付いていなければ投稿できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include('User must exist')
+        expect(@item.errors.full_messages).to include('ユーザーを入力してください')
       end
       it '価格は、¥300以上でなければ保存できない' do
         @item.item_price = '100'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price must be greater than or equal to 300')
+        expect(@item.errors.full_messages).to include('販売価格は300以上の値にしてください')
       end
       it '価格は、¥9,999,999以下でなければ保存できない' do
         @item.item_price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price must be less than or equal to 9999999')
+        expect(@item.errors.full_messages).to include('販売価格は9999999以下の値にしてください')
       end
       it '価格は半角数値でなければ保存できない' do
         @item.item_price = 'about300'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price is not a number')
+        expect(@item.errors.full_messages).to include('販売価格は数値で入力してください')
       end
     end
   end
