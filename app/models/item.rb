@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_one :order
-  # has_one :order
+
   belongs_to :item_category
   belongs_to :item_sales_status
   belongs_to :item_shipping_fee_status
